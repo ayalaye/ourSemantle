@@ -6,6 +6,8 @@ const schedule = require('node-schedule');
 const http = require('http');
 const socketIo = require('socket.io');
 const { v4: uuidv4 } = require('uuid');
+const fetch = require('node-fetch');
+
 //
 let tempWord, previousWord, dailyWord, numPuzzle, numOfWinners, scoresArray1, scoresArray990, scoresArray999
 previousWord = ""
@@ -333,7 +335,7 @@ server.listen(my_port, () => {
 });
 
 // Create a task to execute at 01:00 (01:00 AM) every day
-const job = schedule.scheduleJob('11 19 * * *', function () {
+const job = schedule.scheduleJob('25 19 * * *', function () {
   startNewGame()
 });
 const currentTime = new Date();
