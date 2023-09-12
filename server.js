@@ -51,15 +51,15 @@ function addAndSortScore(score) {
 
   }
   scoresArray999 = scoresArray[0]
-  if (scoresArray999 === undefined) {
+  if (scoresArray999 === undefined || scoresArray999 === null) {
     scoresArray999 = 0
   }
   scoresArray990 = scoresArray[9]
-  if (scoresArray990 === undefined) {
+  if (scoresArray990 === undefined || scoresArray990 === null) {
     scoresArray990 = 0
   }
   scoresArray1 = scoresArray[998]
-  if (scoresArray1 === undefined) {
+  if (scoresArray1 === undefined || scoresArray1 === null) {
     scoresArray1 = 0
   }
   return scoresArray.indexOf(score)
