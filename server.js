@@ -6,7 +6,7 @@ const schedule = require('node-schedule');
 const http = require('http');
 const socketIo = require('socket.io');
 const { v4: uuidv4 } = require('uuid');
-
+//
 let tempWord, previousWord, dailyWord, numPuzzle, numOfWinners, scoresArray1, scoresArray990, scoresArray999
 previousWord = ""
 dailyWord = ""
