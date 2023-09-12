@@ -333,6 +333,11 @@ server.listen(my_port, () => {
 });
 
 // Create a task to execute at 01:00 (01:00 AM) every day
-const job = schedule.scheduleJob('25 21 * * *', function () {
+const job = schedule.scheduleJob('31 21 * * *', function () {
   startNewGame()
 });
+const currentTime = new Date();
+const currentHour = currentTime.getHours();
+const currentMinute = currentTime.getMinutes();
+
+console.log(`השעה הנוכחית היא: ${currentHour}:${currentMinute}`);
