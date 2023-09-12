@@ -20,7 +20,6 @@ const app = express()
 // infoSharedGames includes information about shared games: 
 // number of shared guesses, the number of the guess where the win happened (the first)
 let infoSharedGames = new Map();
-const DRAW_INTERVAL_MS = 0.03 * 60 * 60 * 1000; 
 
 app.use(express.static('client'))
 app.use(express.json())
@@ -310,7 +309,7 @@ async function drawNewWord() {
 }
 
 function startNewGame() {
-  // infoSharedGames.clear() // לא לשכוח להוריד סילוש !!!!
+  infoSharedGames.clear() // Deletes the shared games and information about them, at the end of each day
   numOfWinners = 0
   scoresArray1 = 0
   scoresArray990 = 0
@@ -321,13 +320,18 @@ function startNewGame() {
   drawNewWord();
 }
 
-startNewGame();
+// startNewGame();
 
-setInterval(startNewGame, DRAW_INTERVAL_MS);
+// setInterval(startNewGame, DRAW_INTERVAL_MS);
 
 port = 3000
 my_port = process.env.PORT || port
 
 server.listen(my_port, () => {
   console.log(`Server is running on port ${port}`);
+});
+
+// Create a task to execute at 01:00 (01:00 AM) every day
+const job = schedule.scheduleJob('0 1 * * *', function () {
+  startNewGame()
 });
