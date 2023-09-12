@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semantle</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="client.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="init()">
+
+    <div>
+        
+
+        <div class="overlay" id="overlay"></div>
+
+        <div id="rullsWindow" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeRulls">&times;</span>
+                <div class="modal-header">
+                    <h1>Guess the secret word</h1>
+                </div>
+                <div class="modal-body">
+                    <h3>
+                        You can guess a word or a short phrase. The secret word can be any length, but will be a single
+                        word (and not a phrase).<br><br>
+                        The game will tell how semantically close the word is to the secret word. Kinship is not
+                        expressed in spelling but in meaning. Two words are semantically closer the more likely they are
+                        to be used in a similar context. 100 This is the secret word itself.<br><br>
+                        The secret word can be any part of speech, but will always be a single word.<br><br>
+                        The game will tell you how close your guess is to the secret word and indicate if the word is
+                        one of the 1000 words closest to the secret word. (The 1000 close words received today by
+                        players.)<br><br>
+                        Unlike Wordle, you usually need more than 6 guesses. More like a few dozen. And there is a new
+                        word every day. The word is renewed at 1 am.
+                        <br><br>
+                    </h3>
+                </div>
+            </div>
+        </div>
+
+        <div id="teamWindow" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeTeam">&times;</span>
+                <div class="modal-header">
+                    <h1>Play with Friends</h1>
+                </div>
+                <div class="modal-body">
+                    <h3>
+                        You can play Semantle together as a team! If you are the team creator, click "Get the code" to
+                        get a
+                        code for your room.<br>
+                        Then you can paste the room code into a text or email for others to enter in the "Join a Team"
+                        section.<br> Click the "Leave"
+                        button to leave the team game.<br><br>
+                    </h3>
+                    <div id="createGameContent">
+                        <span>Enter your name: </span>
+                        <input id="inputName" placeholder="Guest">
+                        <br>
+                        <br>
+                        <span>Create the team:</span>
+                        <button id="createGame">Get the code</button>
+                        <br>
+                        <br>
+                        <span>Join a team:</span>
+                        <input id="gameIdInput" placeholder="code">
+                        <button id="joinGame">Join</button>
+                    </div>
+                    <h3 class="team" id="teamInWindow"></h3>
+                    <button id="leaveGame">[→ Leave</button>
+                </div>
+
+            </div>
+        </div>
+        
+        
+        <div class="title">
+            <h1>Semantle</h1>
+            <div class = "icons"></div>
+            <div>
+                <button class="icon-button" id="openRullsBtn">
+                    <span class="icon-button-symbol">?</span>
+                </button>
+
+                <span class="button-text">Rules</span>
+            </div>
+            <div>
+                <button class=" icon-button" id="openTeamBtn">
+                    <span class="icon-button-symbol">👥</span>
+                </button>
+                <span class="button-text">Team</span>
+            </div>
+
+        </div>
+        <h3 id="start"></h3>
+        <h3 id="unknownOrRestoredWord"></h3>
+        <div class="center">
+            <button id="btn_guess">guess</button>
+            <input type="text" name="" id="input_word" placeholder="Enter lowercase letters">
+            <div class="loader" id="loader"></div>
+            <span> </span>
+        </div>
+        <img id="gif-overlay" src="fireworks.gif">
+        <h3 class="team" id="teamInScreen"></h3>
+        <h3 id="winInformation"></h3>
+        <table id="table_results">
+
+            <tr>
+                <th>#</th>
+                <th>Guess</th>
+                <th>Similarity</th>
+                <th>Getting close?</th>
+                <th></th>
+                <th></th>
+            </tr>
+
+        </table>
+
+        <br>
+        <br>
+        <button id="giveUp">Give Up</button>
+        <h3 id="dailyWord"></h3>
+    </div>
+
+</body>
+
+</html>
