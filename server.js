@@ -326,7 +326,7 @@ function startNewGame() {
   drawNewWord();
 }
 
-// startNewGame();
+startNewGame();
 
 setInterval(startNewGame, DRAW_INTERVAL_MS);
 
@@ -347,3 +347,4 @@ const currentHour = currentTime.getHours();
 const currentMinute = currentTime.getMinutes();
 
 console.log(`The time now: ${currentHour}:${currentMinute}`);
+console.log("end");
