@@ -153,12 +153,12 @@ io.on('connection', (socket) => {
     });
     let errorOccurred = false;
 
-    pythonProcess.stderr.on('data', (data) => {
-      console.error(`Python script error: ${data}`);
-      errorOccurred = true;
+    // pythonProcess.stderr.on('data', (data) => {
+    //   console.error(`Python script error: ${data}`);
+    //   errorOccurred = true;
 
 
-    });
+    // });
 
     pythonProcess.on('close', (code) => {
       let numOfGuesses = -1 // not shared game
