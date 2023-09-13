@@ -320,7 +320,8 @@ function startNewGame() {
   scoresArray = []
   previousWord = dailyWord
   numPuzzle++
-  drawNewWord();
+  dailyWord = "color"
+  // drawNewWord();
 }
 
 // startNewGame();
@@ -335,7 +336,7 @@ server.listen(my_port, () => {
 });
 
 // Create a task to execute at 01:00 (01:00 AM) every day
-const job = schedule.scheduleJob('9 0 * * *', function () {
+const job = schedule.scheduleJob('26 11 * * *', function () {
   startNewGame()
 });
 const currentTime = new Date();
