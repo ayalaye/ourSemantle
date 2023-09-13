@@ -336,9 +336,9 @@ server.listen(my_port, () => {
 });
 
 // Create a task to execute at 01:00 (01:00 AM) every day
-const job = schedule.scheduleJob('4 9 * * *', function () {
+const job = schedule.scheduleJob('15 9 * * *', function () {
   console.log("job")
-  startNewGame()
+  // startNewGame()
 });
 const currentTime = new Date();
 const currentHour = currentTime.getHours();
