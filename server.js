@@ -141,7 +141,8 @@ io.on('connection', (socket) => {
     let indexSimilarity
     const command = 'similarity.py';
     const args = [guess, dailyWord];
-    const pythonProcess = spawn('python', [command, ...args]);
+    // const pythonProcess = spawn('python', [command, ...args]);
+    const pythonProcess = spawn('python', ['similarity.py', guess, dailyWord]);
 
     console.log("server guess: " + guess + "!")
     console.log("server dailyWord: " + dailyWord + "!")
@@ -156,8 +157,6 @@ io.on('connection', (socket) => {
     // pythonProcess.stderr.on('data', (data) => {
     //   console.error(`Python script error: ${data}`);
     //   errorOccurred = true;
-
-
     // });
 
     pythonProcess.on('close', (code) => {
