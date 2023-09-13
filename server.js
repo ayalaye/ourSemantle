@@ -320,8 +320,8 @@ function startNewGame() {
   scoresArray = []
   previousWord = dailyWord
   numPuzzle++
-  dailyWord = "color"
-  // drawNewWord();
+  // dailyWord = "color"
+  drawNewWord();
 }
 
 // startNewGame();
@@ -336,7 +336,7 @@ server.listen(my_port, () => {
 });
 
 // Create a task to execute at 01:00 (01:00 AM) every day
-const job = schedule.scheduleJob('46 8 * * *', function () {
+const job = schedule.scheduleJob('4 9 * * *', function () {
   console.log("job")
   startNewGame()
 });
@@ -344,4 +344,4 @@ const currentTime = new Date();
 const currentHour = currentTime.getHours();
 const currentMinute = currentTime.getMinutes();
 
-console.log(`השעה הנוכחית היא: ${currentHour}:${currentMinute}`);
+console.log(`The time now: ${currentHour}:${currentMinute}`);
