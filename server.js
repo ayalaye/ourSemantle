@@ -6,7 +6,8 @@ const schedule = require('node-schedule');
 const http = require('http');
 const socketIo = require('socket.io');
 const { v4: uuidv4 } = require('uuid');
-// import fetch from 'node-fetch';
+// const fetch = require('node-fetch');
+const axios = require('axios');
 const DRAW_INTERVAL_MS = 0.03 * 60 * 60 * 1000; // 24 שעות במילישניות
 
 //
@@ -273,9 +274,10 @@ io.on('connection', (socket) => {
 async function getRandomWord() {
   const url = 'https://random-word-api.herokuapp.com/word';
   try {
-    const response = await fetch(url);
-    const data = await response.json();
-    const randomWord = data[0]; // The random word is inside an array
+    // const response = await fetch(url);
+    const response = await axios.get('https://random-word-api.herokuapp.com/word');
+    // const data = await response.json();
+    const randomWord = response.data[0]; // The random word is inside an array
     return randomWord;
   } catch (error) {
     console.error('Error fetching random word:', error);
