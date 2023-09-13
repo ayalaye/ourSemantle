@@ -304,6 +304,7 @@ async function drawNewWord() {
   });
 
   pythonProcess2.stderr.on('data', (data) => {
+    console.error(`Python script error: ${data}`);
     drawNewWord()
   });
 
