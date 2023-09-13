@@ -7,6 +7,7 @@ const http = require('http');
 const socketIo = require('socket.io');
 const { v4: uuidv4 } = require('uuid');
 // import fetch from 'node-fetch';
+const DRAW_INTERVAL_MS = 0.03 * 60 * 60 * 1000; // 24 שעות במילישניות
 
 //
 let tempWord, previousWord, dailyWord, numPuzzle, numOfWinners, scoresArray1, scoresArray990, scoresArray999
@@ -312,6 +313,7 @@ async function drawNewWord() {
 }
 
 function startNewGame() {
+  console.log("start new game")
   infoSharedGames.clear() // Deletes the shared games and information about them, at the end of each day
   numOfWinners = 0
   scoresArray1 = 0
@@ -326,7 +328,7 @@ function startNewGame() {
 
 // startNewGame();
 
-// setInterval(startNewGame, DRAW_INTERVAL_MS);
+setInterval(startNewGame, DRAW_INTERVAL_MS);
 
 port = 3000
 my_port = process.env.PORT || port
@@ -336,10 +338,10 @@ server.listen(my_port, () => {
 });
 
 // Create a task to execute at 01:00 (01:00 AM) every day
-const job = schedule.scheduleJob('15 9 * * *', function () {
-  console.log("job")
-  // startNewGame()
-});
+// const job = schedule.scheduleJob('15 9 * * *', function () {
+//   console.log("job")
+//   startNewGame()
+// });
 const currentTime = new Date();
 const currentHour = currentTime.getHours();
 const currentMinute = currentTime.getMinutes();
