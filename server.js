@@ -349,3 +349,4 @@ const currentHour = currentTime.getHours();
 const currentMinute = currentTime.getMinutes();
 
 console.log(`The time now: ${currentHour}:${currentMinute}`);
+//
