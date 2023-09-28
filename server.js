@@ -141,7 +141,6 @@ io.on('connection', (socket) => {
     let indexSimilarity
     const command = 'similarity.py';
     const args = [guess, dailyWord];
-    // const pythonProcess = spawn('python', [command, ...args]);
     const pythonProcess = spawn('python', ['similarity.py', guess, dailyWord]);
 
     console.log("server guess: " + guess + "!")
